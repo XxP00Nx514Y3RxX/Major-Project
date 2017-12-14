@@ -33,7 +33,7 @@ class SpaceShip {
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
     }
     else if (SpaceShipMovingDown == true){
-      
+      SpaceShipY = SpaceShipY - SpaceShipSpeed/2;
     }
     if (keyPressed == true){
       if (key == 'w'){
@@ -51,6 +51,7 @@ class SpaceShip {
         SpaceShipMovingRight = true;
       } 
     }
+    else{
     else if (SpaceShipMovingUp == true && SpaceShipMovingRight == true){
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
       //rotate it too
