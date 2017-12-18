@@ -9,7 +9,7 @@ void setup(){
 }
 
 void draw(){
-  println("");
+  println(Bartholomew.SpaceShipY);
   background(0);
   DwaneJ.displayAsteroid();
   DwaneJ.moveAsteroid();

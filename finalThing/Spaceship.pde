@@ -1,11 +1,11 @@
 class SpaceShip {
   
   boolean SpaceShipMovingUp, SpaceShipMovingDown, SpaceShipMovingLeft, SpaceShipMovingRight;
-  float SpaceShipX, SpaceShipY, SpaceShipSize, SpaceShipSpeed;
+  float SpaceShipX, SpaceShipY, SpaceShipSize, SpaceShipSpeed, direction;
   
   SpaceShip(){
-    SpaceShipX = width/2;
-    SpaceShipY = height/2;
+    SpaceShipX = 0;
+    SpaceShipY = 0;
     SpaceShipSize = 50;
     SpaceShipSpeed = 1;
   }
@@ -24,17 +24,14 @@ class SpaceShip {
     if (SpaceShipX < 0 - SpaceShipSize/2){
       SpaceShipX = SpaceShipX + width + SpaceShipSize;
     }
+    ellipseMode(CENTER);
     fill(255);
+    translate(width/2, height/2);
+    rotate(direction);
     ellipse(SpaceShipX, SpaceShipY, SpaceShipSize, SpaceShipSize);
   }
   
   void moveSpaceShip(){
-    if (SpaceShipMovingUp == true){
-      SpaceShipY = SpaceShipY + SpaceShipSpeed;
-    }
-    else if (SpaceShipMovingDown == true){
-      SpaceShipY = SpaceShipY - SpaceShipSpeed/2;
-    }
     if (keyPressed == true){
       if (key == 'w'){
         SpaceShipMovingUp = true;
@@ -42,22 +39,46 @@ class SpaceShip {
       else if (key == 's'){
         SpaceShipMovingDown = true;
       }
-      
+      //made for rotating 
       if (key == 'a'){
         SpaceShipMovingLeft = true;
-        //rotate(PI/ 3.0);
+        direction = direction - 0.1;
+        //rotate(direction);
       }
+      //made for rotating
       else if (key == 'd'){
         SpaceShipMovingRight = true;
+        direction = direction + 0.1;
+        //rotate(direction);
       } 
     }
     else{
+      SpaceShipMovingUp = false;
+      SpaceShipMovingDown = false;
+      SpaceShipMovingLeft = false;
+      SpaceShipMovingRight = false;
+    }
+    //you can only move forward and backward
+    if (SpaceShipMovingUp == true){
+      SpaceShipY = SpaceShipY + SpaceShipSpeed;
+    }
+    else if (SpaceShipMovingDown == true){
+      SpaceShipY = SpaceShipY - SpaceShipSpeed/2;
+    }
     else if (SpaceShipMovingUp == true && SpaceShipMovingRight == true){
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
       //rotate it too
     }
     else if (SpaceShipMovingUp == true && SpaceShipMovingLeft == true){
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
+      //rotate it too
+    }
+    else if (SpaceShipMovingDown == true && SpaceShipMovingRight == true){
+      SpaceShipY = SpaceShipY - SpaceShipSpeed;
+      //rotate it too
+    }
+    else if (SpaceShipMovingDown == true && SpaceShipMovingLeft == true){
+      SpaceShipY = SpaceShipY - SpaceShipSpeed;
       //rotate it too
     }
   }
