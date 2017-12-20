@@ -27,8 +27,9 @@ class SpaceShip {
     ellipseMode(CENTER);
     fill(255);
     translate(width/2, height/2);
+    translate(SpaceShipX, SpaceShipY);
     rotate(direction);
-    ellipse(SpaceShipX, SpaceShipY, SpaceShipSize, SpaceShipSize);
+    ellipse(0, 0, SpaceShipSize+10, SpaceShipSize);
   }
   
   void moveSpaceShip(){
@@ -67,18 +68,22 @@ class SpaceShip {
     }
     else if (SpaceShipMovingUp == true && SpaceShipMovingRight == true){
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
+      direction = direction + 0.1;
       //rotate it too
     }
     else if (SpaceShipMovingUp == true && SpaceShipMovingLeft == true){
       SpaceShipY = SpaceShipY + SpaceShipSpeed;
+      direction = direction - 0.1;
       //rotate it too
     }
     else if (SpaceShipMovingDown == true && SpaceShipMovingRight == true){
       SpaceShipY = SpaceShipY - SpaceShipSpeed;
+      direction = direction + 0.1;
       //rotate it too
     }
     else if (SpaceShipMovingDown == true && SpaceShipMovingLeft == true){
       SpaceShipY = SpaceShipY - SpaceShipSpeed;
+      direction = direction - 0.1;
       //rotate it too
     }
   }
