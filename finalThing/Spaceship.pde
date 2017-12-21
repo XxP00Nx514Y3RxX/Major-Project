@@ -1,5 +1,6 @@
 class SpaceShip {
   
+  PVector SpaceShipLocation, SpaceShipVelocity, SpaceShipAcceleration, SpaceShipDirection;
   boolean SpaceShipMovingUp, SpaceShipMovingDown, SpaceShipMovingLeft, SpaceShipMovingRight;
   float SpaceShipX, SpaceShipY, SpaceShipSize, SpaceShipSpeed, direction;
   
