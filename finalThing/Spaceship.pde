@@ -34,17 +34,25 @@ class SpaceShip {
       fill(255);
       translate(SpaceShipLocation.x, SpaceShipLocation.y);
       rotate(SpaceShipDirection.heading());
-      ellipse(0, 0, SpaceShipSize, SpaceShipSize);
+      ellipse(0, 0, SpaceShipSize+10, SpaceShipSize);
     popMatrix();
   }
   
   void moveSpaceShip(){
     SpaceShipLocation.add(SpaceShipVelocity);
-    SpaceShipVelocity.add(SpaceShipAcceleration);
+    SpaceShipVelocity.add(SpaceShipAcceleration.x/2, SpaceShipAcceleration.y/2);
     SpaceShipAcceleration.set(0, 0);
     SpaceShipVelocity.div(1.1);
     if (keyPressed == true){
-      if (key == 'w'){
+      if (key == 'a' && key == 'w'){
+        PVector SpaceShipThrust = new PVector();
+        SpaceShipThrust = SpaceShipDirection.copy();
+        SpaceShipThrust.normalize();
+        SpaceShipThrust.mult(2);
+        SpaceShipAcceleration = SpaceShipThrust;
+        SpaceShipDirection.rotate(-0.1);
+      }
+      else if (key == 'w'){
         PVector SpaceShipThrust = new PVector();
         SpaceShipThrust = SpaceShipDirection.copy();
         SpaceShipThrust.normalize();
