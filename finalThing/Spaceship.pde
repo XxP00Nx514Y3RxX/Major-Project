@@ -8,7 +8,6 @@ class SpaceShip {
     SpaceShipX = 0;
     SpaceShipY = 0;
     SpaceShipSize = 50;
-    //SpaceShipSpeed = 1;
     SpaceShipLocation = new PVector(width/2, height/2);
     SpaceShipVelocity = new PVector(0,0);
     SpaceShipAcceleration = new PVector(0, 0);
@@ -16,7 +15,6 @@ class SpaceShip {
   }
   
   void displaySpaceShip(){
-    //moveSpaceShip();
     if (SpaceShipY > height + SpaceShipSize/2){
       SpaceShipY = SpaceShipY - height - SpaceShipSize;
     }
@@ -39,78 +37,44 @@ class SpaceShip {
   }
   
   void moveSpaceShip(){
+    if (SpaceShipLocation.x > width+SpaceShipSize){
+      SpaceShipLocation.x = 0-SpaceShipSize;
+    }
+    else if (SpaceShipLocation.y > height+SpaceShipSize){
+      SpaceShipLocation.y = 0-SpaceShipSize;
+    }
+    else if (SpaceShipLocation.x < 0-SpaceShipSize){
+      SpaceShipLocation.x = width+SpaceShipSize;
+    }
+    else if (SpaceShipLocation.y < 0-SpaceShipSize){
+      SpaceShipLocation.y = height+SpaceShipSize;
+    }
     SpaceShipLocation.add(SpaceShipVelocity);
-    SpaceShipVelocity.add(SpaceShipAcceleration.x/2, SpaceShipAcceleration.y/2);
+    SpaceShipVelocity.add(SpaceShipAcceleration.x/5, SpaceShipAcceleration.y/5);
     SpaceShipAcceleration.set(0, 0);
     SpaceShipVelocity.div(1.1);
     if (keyPressed == true){
-      if (key == 'a' && key == 'w'){
+      if (key == 'w'){
         PVector SpaceShipThrust = new PVector();
         SpaceShipThrust = SpaceShipDirection.copy();
         SpaceShipThrust.normalize();
         SpaceShipThrust.mult(2);
         SpaceShipAcceleration = SpaceShipThrust;
-        SpaceShipDirection.rotate(-0.1);
       }
-      else if (key == 'w'){
-        PVector SpaceShipThrust = new PVector();
-        SpaceShipThrust = SpaceShipDirection.copy();
-        SpaceShipThrust.normalize();
-        SpaceShipThrust.mult(2);
-        SpaceShipAcceleration = SpaceShipThrust;
-        //SpaceShipMovingUp = true;
-      }
-    //  else if (key == 's'){
-    //    SpaceShipMovingDown = true;
-    //  }
-    //  //made for rotating 
       if (key == 'a'){
-    //    SpaceShipMovingLeft = true;
-    //    direction = direction - 0.1;
-    //    //rotate(direction);
         SpaceShipDirection.rotate(-0.1);
       }
-    //  //made for rotating
       else if (key == 'd'){
-    //    SpaceShipMovingRight = true;
-    //    direction = direction + 0.1;
-    //    //rotate(direction);
         SpaceShipDirection.rotate(0.1);
-      } 
+      }
+      //i have no idea how to make it reverse slower so im just making it no available
+      else if (key == 's'){
+        PVector SpaceShipThrust = new PVector();
+        SpaceShipThrust = SpaceShipDirection.copy();
+        SpaceShipThrust.normalize();
+        SpaceShipThrust.mult(2);
+        SpaceShipAcceleration = SpaceShipThrust;
+      }
     }
-    //else{
-    //  SpaceShipMovingUp = false;
-    //  SpaceShipMovingDown = false;
-    //  SpaceShipMovingLeft = false;
-    //  SpaceShipMovingRight = false;
-    //}
-    ////you can only move forward and backward
-    //if (SpaceShipMovingUp == true){
-    //  SpaceShipY = SpaceShipY + SpaceShipSpeed;
-    //}
-    //else if (SpaceShipMovingDown == true){
-    //  SpaceShipY = SpaceShipY - SpaceShipSpeed/2;
-    //}
-    //else if (SpaceShipMovingUp == true && SpaceShipMovingRight == true){
-    //  SpaceShipY = SpaceShipY + SpaceShipSpeed;
-    //  direction = direction + 0.1;
-    //  //rotate it too
-    //}
-    //else if (SpaceShipMovingUp == true && SpaceShipMovingLeft == true){
-    //  SpaceShipY = SpaceShipY + SpaceShipSpeed;
-    //  direction = direction - 0.1;
-    //  //rotate it too
-    //}
-    //else if (SpaceShipMovingDown == true && SpaceShipMovingRight == true){
-    //  SpaceShipY = SpaceShipY - SpaceShipSpeed;
-    //  direction = direction + 0.1;
-    //  //rotate it too
-    //}
-    //else if (SpaceShipMovingDown == true && SpaceShipMovingLeft == true){
-    //  SpaceShipY = SpaceShipY - SpaceShipSpeed;
-    //  direction = direction - 0.1;
-    //  //rotate it too
-    //}
   }
-  
 }

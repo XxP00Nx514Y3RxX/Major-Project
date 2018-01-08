@@ -2,14 +2,13 @@ SpaceShip Bartholomew;
 Asteroid DwaneJ;
 
 void setup(){
-  size(500, 500);
-  //fullScreen();
+  size(500, 500);//fullScreen();
   Bartholomew = new SpaceShip();
   DwaneJ = new Asteroid();
 }
 
 void draw(){
-  println(Bartholomew.SpaceShipY);
+  println(Bartholomew.SpaceShipLocation.x);
   background(0);
   DwaneJ.displayAsteroid();
   DwaneJ.moveAsteroid();
