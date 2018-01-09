@@ -8,7 +8,7 @@ class Asteroid {
     AsteroidY = 0;
     AsteroidSize = 50;
     AsteroidLocation = new PVector(width/2, height/2);
-    AsteroidVelocity = new PVector(0,0);
+    AsteroidVelocity = new PVector(0, 0);
     AsteroidAcceleration = new PVector(0, 0);
     AsteroidDirection = new PVector(0, -1);
   }

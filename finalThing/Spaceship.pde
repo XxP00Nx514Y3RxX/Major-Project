@@ -36,6 +36,10 @@ class SpaceShip {
     popMatrix();
   }
   
+  void ShootBlaster(){
+    
+  }
+  
   void moveSpaceShip(){
     if (SpaceShipLocation.x > width+SpaceShipSize){
       SpaceShipLocation.x = 0-SpaceShipSize;
@@ -68,13 +72,12 @@ class SpaceShip {
         SpaceShipDirection.rotate(0.1);
       }
       //i have no idea how to make it reverse slower so im just making it no available
-      else if (key == 's'){
-        PVector SpaceShipThrust = new PVector();
-        SpaceShipThrust = SpaceShipDirection.copy();
-        SpaceShipThrust.normalize();
-        SpaceShipThrust.mult(2);
-        SpaceShipAcceleration = SpaceShipThrust;
-      }
+      //else if (key == 's'){
+      //  rotate(radians(180));
+      //}
+      //if (key == ' '){
+      //  ShootBlaster();
+      //}
     }
   }
 }
