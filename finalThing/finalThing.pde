@@ -10,7 +10,7 @@ void setup(){
 }
 
 void draw(){
-  //println(mouseX);
+  println(Pew.BlasterYStart);
   background(50);
   Pew.displayBlaster();
   DwaneJ.displayAsteroid();

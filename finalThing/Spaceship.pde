@@ -15,32 +15,6 @@ class SpaceShip {
   }
   
   void displaySpaceShip(){
-    if (SpaceShipY > height + SpaceShipSize/2){
-      SpaceShipY = SpaceShipY - height - SpaceShipSize;
-    }
-    if (SpaceShipX > width + SpaceShipSize/2){
-      SpaceShipX = SpaceShipX - width - SpaceShipSize;
-    }
-    if (SpaceShipY < 0 - SpaceShipSize/2){
-      SpaceShipY = SpaceShipY + height + SpaceShipSize;
-    }
-    if (SpaceShipX < 0 - SpaceShipSize/2){
-      SpaceShipX = SpaceShipX + width + SpaceShipSize;
-    }
-    ellipseMode(CENTER);
-    pushMatrix();
-      fill(255);
-      translate(SpaceShipLocation.x, SpaceShipLocation.y);
-      rotate(SpaceShipDirection.heading());
-      ellipse(0, 0, SpaceShipSize+10, SpaceShipSize);
-    popMatrix();
-  }
-  
-  void ShootBlaster(){
-    
-  }
-  
-  void moveSpaceShip(){
     if (SpaceShipLocation.x > width+SpaceShipSize){
       SpaceShipLocation.x = 0-SpaceShipSize;
     }
@@ -53,6 +27,20 @@ class SpaceShip {
     else if (SpaceShipLocation.y < 0-SpaceShipSize){
       SpaceShipLocation.y = height+SpaceShipSize;
     }
+    ellipseMode(CENTER);
+    pushMatrix();
+      fill(255);
+      translate(SpaceShipLocation.x, SpaceShipLocation.y);
+      rotate(SpaceShipDirection.heading());
+      ellipse(0, 0, SpaceShipSize, SpaceShipSize);
+    popMatrix();
+  }
+  
+  //void ShootBlaster(){
+  //  
+  //}
+  
+  void moveSpaceShip(){
     SpaceShipLocation.add(SpaceShipVelocity);
     SpaceShipVelocity.add(SpaceShipAcceleration.x/5, SpaceShipAcceleration.y/5);
     SpaceShipAcceleration.set(0, 0);
@@ -65,7 +53,7 @@ class SpaceShip {
         SpaceShipThrust.mult(2);
         SpaceShipAcceleration = SpaceShipThrust;
       }
-      if (key == 'a'){
+      else if (key == 'a'){
         SpaceShipDirection.rotate(-0.1);
       }
       else if (key == 'd'){
@@ -75,9 +63,9 @@ class SpaceShip {
       //else if (key == 's'){
       //  rotate(radians(180));
       //}
-      //if (key == ' '){
-      //  ShootBlaster();
-      //}
+      if (key == ' '){
+        Pew.shootBlaster();
+      }
     }
   }
 }
