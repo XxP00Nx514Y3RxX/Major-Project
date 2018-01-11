@@ -55,16 +55,18 @@ class SpaceShip {
       }
       else if (key == 'a'){
         SpaceShipDirection.rotate(-0.1);
+        Pew.BlasterDirection.rotate(-0.1);
       }
       else if (key == 'd'){
         SpaceShipDirection.rotate(0.1);
+        Pew.BlasterDirection.rotate(0.1);
       }
       //i have no idea how to make it reverse slower so im just making it no available
       //else if (key == 's'){
       //  rotate(radians(180));
       //}
       if (key == ' '){
-        Pew.shootBlaster();
+        Pew.BlasterMoving = true;
       }
     }
   }

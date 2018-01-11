@@ -10,9 +10,10 @@ void setup(){
 }
 
 void draw(){
-  println(Pew.BlasterYStart);
+  println(Pew.BlasterLocation);
   background(50);
   Pew.displayBlaster();
+  Pew.shootBlaster();
   DwaneJ.displayAsteroid();
   DwaneJ.moveAsteroid();
   Bartholomew.displaySpaceShip();
