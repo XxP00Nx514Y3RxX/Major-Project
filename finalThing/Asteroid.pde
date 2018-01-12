@@ -13,7 +13,18 @@ class Asteroid {
     AsteroidDirection = new PVector(0, -1);
   }
   
+  void destroyAsteroid(){
+    if (DestroyedAsteroid == true){
+        
+    }
+  }
+  
   void displayAsteroid(){
+    
+    destroyAsteroid(){
+        
+    }
+    
     ellipseMode(CENTER);
     pushMatrix();
       fill(255);
